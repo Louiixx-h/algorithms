@@ -225,3 +225,35 @@ Final shortest paths from A:
 - A to B: 1
 - A to C: 3
 - A to D: 5
+
+## Search Algorithms: Binary Search
+
+**Binary Search** is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing in half the portion of the list that could contain the item until you've narrowed down the possible locations to just one.
+
+## Explanation
+
+Binary Search operates on the principle of divide-and-conquer. The algorithm compares the target value to the middle element of the list. If the target value matches the middle element, the search is successful. If the target value is less than the middle element, the algorithm repeats the search on the left half of the list. If the target value is greater, the algorithm repeats the search on the right half of the list. This process continues, halving the list each time, until the target value is found or the sublist has size zero.
+
+### Steps of Binary Search:
+1. **Initialization**: Start with the entire list and determine the middle element.
+2. **Comparison**: Compare the target value to the middle element.
+3. **Sublist Selection**: Based on the comparison, decide whether to search the left or right sublist.
+4. **Repeat**: Continue the process on the selected sublist until the target value is found or the sublist is empty.
+
+## Advantages
+
+- **Efficiency**: Binary Search is much faster than linear search for large datasets. By halving the search space at each step, it quickly reduces the size of the problem.
+- **Predictable Performance**: The time complexity of binary search is logarithmic, which means it grows very slowly with the size of the input.
+- **Simple Implementation**: Once the list is sorted, binary search is relatively straightforward to implement.
+
+## Disadvantages
+
+- **Requires Sorted Data**: Binary Search can only be applied to a list that is already sorted. This means there is an upfront cost to sorting the list if it is not already sorted.
+- **Overhead for Small Lists**: For very small lists, the overhead of the repeated comparisons and divisions may make binary search less efficient than a simple linear search.
+- **Complexity with Dynamic Data**: In scenarios where the data is frequently changing, maintaining a sorted list can add complexity and overhead.
+
+## Time Complexity
+
+- **Best Case**: O(1) - The target value is found at the middle of the list on the first comparison.
+- **Average Case**: O(log n) - The list is halved repeatedly, leading to logarithmic growth relative to the number of elements.
+- **Worst Case**: O(log n) - The target value is in the last possible position checked, still requiring a logarithmic number of steps.
