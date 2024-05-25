@@ -142,36 +142,89 @@ O Insertion Sort constrói o array ordenado um elemento de cada vez. Ele pega ca
 - **Caso Médio:** O(n^2).
 - **Pior Caso:** O(n^2).
 
-## Algoritmo de Caminho Mínimo: Dijkstra
+## Algoritmos de Busca de Caminho: Dijkstra
 
-O **algoritmo de Dijkstra** é um algoritmo fundamental na teoria dos grafos, usado para encontrar os caminhos mais curtos entre nós em um grafo, que podem representar, por exemplo, redes de estradas.
+O **algoritmo de Dijkstra** é um algoritmo fundamental na teoria dos grafos, usado para encontrar os caminhos mais curtos entre nós em um grafo, que podem representar, por exemplo, redes rodoviárias.
 
 ## Explicação
 
-O algoritmo de Dijkstra funciona selecionando iterativamente o nó com a menor distância provisória, atualizando as distâncias para seus vizinhos e marcando o nó como "visitado". Este processo continua até que todos os nós tenham sido visitados ou o caminho mais curto até o nó de destino tenha sido encontrado.
+O algoritmo de Dijkstra funciona selecionando iterativamente o nó com a menor distância tentativa, atualizando as distâncias para seus vizinhos e marcando o nó como "visitado". Esse processo continua até que todos os nós tenham sido visitados ou o caminho mais curto para o nó alvo tenha sido encontrado.
 
 ### Etapas do Algoritmo de Dijkstra:
 1. **Inicialização**:
     - Defina a distância para o nó inicial como zero.
-    - Defina a distância para todos os outros nós como infinito.
-    - Marque todos os nós como não visitados.
+    - Defina a distância para todos os outros nós como infinita.
+    - Defina todos os nós como não visitados.
     - Defina o nó inicial como o nó atual.
 
-2. **Visitar o Nó Atual**:
-    - Para o nó atual, considere todos os seus vizinhos não visitados e calcule suas distâncias provisórias (distância do nó atual + peso da aresta para o vizinho).
-    - Se a distância provisória calculada for menor que a distância conhecida atual para o vizinho, atualize a menor distância para o vizinho.
+2. **Visite o Nó Atual**:
+    - Para o nó atual, considere todos os seus vizinhos não visitados e calcule suas distâncias tentativas (distância do nó atual + peso da aresta até o vizinho).
+    - Se a distância tentativa calculada for menor que a distância conhecida atualmente para o vizinho, atualize a distância mais curta para o vizinho.
 
 3. **Marcar como Visitado**:
     - Após visitar todos os vizinhos do nó atual, marque o nó atual como visitado. Um nó visitado não será verificado novamente.
 
-4. **Selecionar o Próximo Nó**:
-    - Selecione o nó não visitado com a menor distância provisória e defina-o como o novo nó atual.
-    - Repita o processo até que todos os nós sejam visitados ou o caminho mais curto para o nó de destino seja determinado.
+4. **Selecione o Próximo Nó**:
+    - Selecione o nó não visitado com a menor distância tentativa e defina-o como o novo nó atual.
+    - Repita o processo até que todos os nós sejam visitados ou o caminho mais curto para o nó alvo seja determinado.
 
 ## Vantagens
 
 - **Eficiência**: Encontra eficientemente o caminho mais curto em grafos com pesos não negativos.
-- **Aplicabilidade Ampla**: Útil em
+- **Ampla Aplicabilidade**: Útil em várias aplicações práticas, como sistemas de roteamento e navegação.
+
+## Desvantagens
+
+- **Apenas Pesos Não Negativos**: Não lida com grafos com arestas de peso negativo. Para tais grafos, o algoritmo de Bellman-Ford é mais apropriado.
+- **Caminho Mais Curto de Fonte Única**: Encontra os caminhos mais curtos de um único nó fonte para todos os outros nós. Se forem necessárias várias fontes, o algoritmo precisa ser executado várias vezes.
+- **Complexidade de Espaço**: Requer memória adicional para manter o conjunto de nós não visitados e a tabela de distâncias.
+
+## Complexidade de Tempo
+
+A complexidade de tempo do algoritmo de Dijkstra depende das estruturas de dados usadas:
+- Usando uma lista simples: O(V^2), onde V é o número de vértices.
+- Usando uma fila de prioridade (heap binário): O((V + E) log V), onde E é o número de arestas.
+- Usando um heap de Fibonacci: O(E + V log V), que é mais eficiente para grafos com um grande número de arestas.
+
+## Exemplo do Algoritmo de Dijkstra
+
+Imagine um grafo que representa uma rede rodoviária onde os nós são interseções e as arestas são estradas com pesos que representam a distância de viagem:
+
+```
+     (A)
+    / | \
+   1  3  6
+  /   |   \
+(B)-- 5 --(C)
+  \   |   /
+   4  2  1
+    \ | /
+     (D)
+```
+
+1. **Inicialização**:
+    - Comece no nó A.
+    - Defina a distância para A = 0, e as distâncias para B, C, D = ∞.
+
+2. **Visite A**:
+    - Atualize as distâncias para os vizinhos: B (1), C (3), D (6).
+    - Marque A como visitado.
+
+3. **Selecione B** (menor distância tentativa):
+    - Atualize as distâncias para os vizinhos: D (5 através de B).
+    - Marque B como visitado.
+
+4. **Selecione C**:
+    - Atualize as distâncias para os vizinhos: D (5 através de C).
+    - Marque C como visitado.
+
+5. **Selecione D**:
+    - Todos os vizinhos visitados, o algoritmo termina.
+
+Caminhos mais curtos finais de A:
+- A para B: 1
+- A para C: 3
+- A para D: 5
 
 ## Algoritmos de Busca: Busca Binária
 
