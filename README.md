@@ -141,3 +141,87 @@ Insertion Sort builds the sorted array one element at a time. It takes each elem
 - **Best Case:** O(n) (when the array is already sorted).
 - **Average Case:** O(n^2).
 - **Worst Case:** O(n^2).
+
+## Pathfinding Algorithms: Dijkstra
+
+**Dijkstra's algorithm** is a fundamental algorithm in graph theory, used for finding the shortest paths between nodes in a graph, which may represent, for example, road networks.
+
+## Explanation
+
+Dijkstra's algorithm works by iteratively selecting the node with the smallest tentative distance, updating the distances to its neighbors, and marking the node as "visited." This process continues until all nodes have been visited or the shortest path to the target node has been found.
+
+### Steps of Dijkstra's Algorithm:
+1. **Initialization**:
+    - Set the distance to the start node to zero.
+    - Set the distance to all other nodes to infinity.
+    - Set all nodes as unvisited.
+    - Set the start node as the current node.
+
+2. **Visit the Current Node**:
+    - For the current node, consider all its unvisited neighbors and calculate their tentative distances (current node's distance + edge weight to neighbor).
+    - If the calculated tentative distance is less than the current known distance to the neighbor, update the shortest distance to the neighbor.
+
+3. **Mark as Visited**:
+    - After visiting all neighbors of the current node, mark the current node as visited. A visited node will not be checked again.
+
+4. **Select the Next Node**:
+    - Select the unvisited node with the smallest tentative distance and set it as the new current node.
+    - Repeat the process until all nodes are visited or the shortest path to the target node is determined.
+
+## Advantages
+
+- **Efficiency**: Efficiently finds the shortest path in graphs with non-negative weights.
+- **Wide Applicability**: Useful in various practical applications, such as routing and navigation systems.
+
+## Disadvantages
+
+- **Non-negative Weights Only**: Does not handle graphs with negative weight edges. For such graphs, the Bellman-Ford algorithm is more appropriate.
+- **Single-Source Shortest Path**: Finds the shortest paths from a single source node to all other nodes. If multiple sources are needed, the algorithm needs to be run multiple times.
+- **Space Complexity**: Requires additional memory to maintain the set of unvisited nodes and the distance table.
+
+## Time Complexity
+
+The time complexity of Dijkstra's algorithm depends on the data structures used:
+- Using a simple list: O(V^2), where V is the number of vertices.
+- Using a priority queue (binary heap): O((V + E) log V), where E is the number of edges.
+- Using a Fibonacci heap: O(E + V log V), which is more efficient for graphs with a large number of edges.
+
+## Example of Dijkstra's Algorithm
+
+Imagine a graph representing a road network where nodes are intersections, and edges are roads with weights representing the travel distance:
+
+```
+     (A)
+    / | \
+   1  3  6
+  /   |   \
+(B)-- 5 --(C)
+  \   |   /
+   4  2  1
+    \ | /
+     (D)
+```
+
+1. **Initialization**:
+    - Start at node A.
+    - Set distance to A = 0, and distances to B, C, D = ∞.
+
+2. **Visit A**:
+    - Update distances to neighbors: B (1), C (3), D (6).
+    - Mark A as visited.
+
+3. **Select B** (smallest tentative distance):
+    - Update distances to neighbors: D (5 through B).
+    - Mark B as visited.
+
+4. **Select C**:
+    - Update distances to neighbors: D (5 through C).
+    - Mark C as visited.
+
+5. **Select D**:
+    - All neighbors visited, algorithm terminates.
+
+Final shortest paths from A:
+- A to B: 1
+- A to C: 3
+- A to D: 5
