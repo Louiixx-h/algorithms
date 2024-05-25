@@ -172,3 +172,35 @@ O algoritmo de Dijkstra funciona selecionando iterativamente o nó com a menor d
 
 - **Eficiência**: Encontra eficientemente o caminho mais curto em grafos com pesos não negativos.
 - **Aplicabilidade Ampla**: Útil em
+
+## Algoritmos de Busca: Busca Binária
+
+**Busca Binária** é um algoritmo eficiente para encontrar um item em uma lista ordenada de itens. Ele funciona dividindo repetidamente pela metade a porção da lista que pode conter o item até que você tenha reduzido as possíveis localizações a apenas uma.
+
+## Explicação
+
+A Busca Binária opera com base no princípio de divisão e conquista. O algoritmo compara o valor alvo com o elemento do meio da lista. Se o valor alvo coincidir com o elemento do meio, a busca é bem-sucedida. Se o valor alvo for menor que o elemento do meio, o algoritmo repete a busca na metade esquerda da lista. Se o valor alvo for maior, o algoritmo repete a busca na metade direita da lista. Esse processo continua, dividindo a lista ao meio a cada vez, até que o valor alvo seja encontrado ou a sublista tenha tamanho zero.
+
+### Etapas da Busca Binária:
+1. **Inicialização**: Comece com toda a lista e determine o elemento do meio.
+2. **Comparação**: Compare o valor alvo com o elemento do meio.
+3. **Seleção de Sublista**: Com base na comparação, decida se deve buscar na sublista à esquerda ou à direita.
+4. **Repetir**: Continue o processo na sublista selecionada até que o valor alvo seja encontrado ou a sublista esteja vazia.
+
+## Vantagens
+
+- **Eficiência**: A Busca Binária é muito mais rápida do que a busca linear para grandes conjuntos de dados. Ao dividir o espaço de busca pela metade a cada passo, ela reduz rapidamente o tamanho do problema.
+- **Desempenho previsível**: A complexidade de tempo da busca binária é logarítmica, o que significa que ela cresce muito lentamente em relação ao tamanho da entrada.
+- **Implementação Simples**: Uma vez que a lista está ordenada, a busca binária é relativamente simples de implementar.
+
+## Desvantagens
+
+- **Requer Dados Ordenados**: A Busca Binária só pode ser aplicada a uma lista que já esteja ordenada. Isso significa que há um custo inicial para ordenar a lista, caso não esteja ordenada.
+- **Sobrecarga para Listas Pequenas**: Para listas muito pequenas, a sobrecarga das comparações e divisões repetidas pode tornar a busca binária menos eficiente do que uma busca linear simples.
+- **Complexidade com Dados Dinâmicos**: Em cenários onde os dados mudam frequentemente, manter uma lista ordenada pode adicionar complexidade e sobrecarga.
+
+## Complexidade de Tempo
+
+- **Melhor Caso**: O(1) - O valor alvo é encontrado no meio da lista na primeira comparação.
+- **Caso Médio**: O(log n) - A lista é dividida repetidamente, levando a um crescimento logarítmico em relação ao número de elementos.
+- **Pior Caso**: O(log n) - O valor alvo está na última posição possível verificada, ainda requerendo um número logarítmico de etapas.
